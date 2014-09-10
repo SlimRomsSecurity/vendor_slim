@@ -116,9 +116,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     RemovePackages
 
-# easy way to extend to add more packages
--include vendor/extra/product.mk
-
 PRODUCT_PACKAGE_OVERLAYS += vendor/slim/overlay/common
 
 # Boot animation include
@@ -178,3 +175,4 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.modversion=$(SLIM_MOD_VERSION) \
     ro.slim.buildtype=$(SLIM_BUILD_TYPE)
 
+$(call inherit-product-if-exists, vendor/extra/product.mk)
