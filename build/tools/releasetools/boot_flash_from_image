@@ -55,6 +55,7 @@ else:
 
 updater = "%s/obj/EXECUTABLES/updater_intermediates/updater" % out
 signer = "%s/framework/signapk.jar" % environ['ANDROID_HOST_OUT']
+signer_lib_path = "%s/lib64" % environ['ANDROID_HOST_OUT']
 
 # rm -r $OUT/*kernel*
 for f in listdir(out):
@@ -144,7 +145,7 @@ with ZipFile("%s.zip" % zip_dir, "w") as zipper:
 # sign it
 testkey_x = "%s/build/target/product/security/testkey.x509.pem" % source
 testkey_p = "%s/build/target/product/security/testkey.pk8" % source
-call(['java', '-jar', signer, testkey_x, testkey_p, "%s.zip" % zip_dir, "%s-signed.zip" % zip_dir])
+call(['java', "-Djava.library.path=%s" % signer_lib_path, '-jar', signer, testkey_x, testkey_p, "%s.zip" % zip_dir, "%s-signed.zip" % zip_dir])
 remove("%s.zip" % zip_dir)
 #rmtree(zip_dir)
 print md5(open("%s-signed.zip" % zip_dir, "rb").read()).hexdigest() + " %s-signed.zip" % (kernel_version)
