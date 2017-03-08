@@ -207,7 +207,7 @@ echo
 (
 img=`basename $OUTFILE`
 cd `dirname $OUTFILE`
-$MD5 $img >$img.md5sum
+$MD5 $img | cut -d ' ' -f1 > $img.md5sum
 echo
 echo "Package complete: $OUTFILE"
 cat $img.md5sum
