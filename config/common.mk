@@ -106,6 +106,10 @@ PRODUCT_PACKAGES += \
     libFFmpegExtractor \
     libnamparser
 
+# Remove packages unsafe or unused default packages
+PRODUCT_PACKAGES += \
+    RemovePackages
+
 # easy way to extend to add more packages
 -include vendor/extra/product.mk
 
