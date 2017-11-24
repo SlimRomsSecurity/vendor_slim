@@ -62,8 +62,13 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     CellBroadcastReceiver \
     Development \
-    SpareParts \
+    SpareParts
+
+# Don't include su on user builds
+ifneq (,$(filter userdebug eng,$(TARGET_BUILD_VARIANT)))
+PRODUCT_PACKAGES += \
     su
+endif
 
 # Optional packages
 PRODUCT_PACKAGES += \
