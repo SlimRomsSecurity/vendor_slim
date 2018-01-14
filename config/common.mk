@@ -91,7 +91,6 @@ PRODUCT_PACKAGES += \
     SlimFileManager \
     SlimLauncher \
     LatinIME \
-    Lightning \
     BluetoothExt \
     DashClock
 
